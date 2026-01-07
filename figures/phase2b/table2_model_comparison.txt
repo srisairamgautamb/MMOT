@@ -1,0 +1,9 @@
+Table 2: Model Comparison (FIXED - Same Marginals)
+============================================================
+All methods use Heston-calibrated marginals
+
+Method                  Price ($)    vs Heston      Runtime
+------------------------------------------------------------
+Heston MC (baseline)       355.39           --        1.11s
+MMOT (Ours)                232.77        34.5%        0.74s
+Black-Scholes              346.03         2.6%      0.4162s

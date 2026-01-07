@@ -1,0 +1,32 @@
+# Production Configuration
+# Scaled up architecture for improved accuracy
+
+model:
+  grid_size: 150
+  hidden_dim: 512
+  num_layers: 5
+  num_heads: 8
+  dropout: 0.1
+
+training:
+  epochs: 100
+  batch_size: 32
+  learning_rate: 1.0e-3
+  weight_decay: 1.0e-5
+
+scheduler:
+  type: cosine
+  T_max: 100
+  warmup_epochs: 10
+
+loss:
+  lambda_distill: 1.0
+  lambda_martingale: 5.0
+  lambda_marginal: 0.1
+  epsilon: 1.0
+
+data:
+  train_dir: data/train
+  val_dir: data/val
+  num_workers: 0
+  pin_memory: false

@@ -1,0 +1,41 @@
+{
+  "train_mean_error": 1.5954490576435283,
+  "train_median_error": 0.10397504486855447,
+  "val_mean_error": 1.531164078955345,
+  "val_median_error": 0.05912474232557281,
+  "val_drift": 0.10439754486083984,
+  "fresh_mean_error": 1.699008482849684,
+  "fresh_median_error": 0.13324087099531642,
+  "fresh_max_error": 26.184540085899716,
+  "fresh_drift": 0.09936393737792969,
+  "real_data_total_instances": 150,
+  "real_data_mean_error": 37.20249317128287,
+  "real_data_median_error": 50.0,
+  "real_data_drift": 0.3048854573567708,
+  "ticker_results": {
+    "SPY": {
+      "instances": 50,
+      "mean_error": 50.0,
+      "median_error": 50.0,
+      "mean_drift": 0.5878623962402344
+    },
+    "AAPL": {
+      "instances": 50,
+      "mean_error": 49.765033122326315,
+      "median_error": 50.0,
+      "mean_drift": 0.17714508056640624
+    },
+    "TSLA": {
+      "instances": 50,
+      "mean_error": 11.842446391522286,
+      "median_error": 10.585825033189696,
+      "mean_drift": 0.14964889526367187
+    }
+  },
+  "classical_time_ms": 4479.275131225586,
+  "neural_time_ms": 3.2602643966674805,
+  "speedup": 1373.899348716666,
+  "all_pass": false,
+  "pass_count": 5,
+  "total_count": 9
+}

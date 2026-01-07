@@ -1,0 +1,11 @@
+{
+  "teacher_drift_mean": 0.08297405306805547,
+  "teacher_drift_std": 0.04087876229402797,
+  "student_drift_mean": 0.06709359949259087,
+  "student_drift_std": 0.033818268017731676,
+  "approximation_gap": -0.015880453575464595,
+  "dual_magnitude_mean": 0.3603263968229294,
+  "u_error_mean": 0.2781641310453415,
+  "h_error_mean": 0.09080025695264339,
+  "samples_analyzed": 100
+}

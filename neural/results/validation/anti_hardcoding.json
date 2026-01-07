@@ -1,0 +1,66 @@
+{
+  "lipschitz": {
+    "test_name": "Lipschitz Continuity",
+    "mean_lipschitz": 85.04866512914218,
+    "std_lipschitz": 59.44415540449527,
+    "min_lipschitz": 4.7699329321962844,
+    "max_lipschitz": 190.4796979716304,
+    "epsilon": 0.01,
+    "n_trials": 10,
+    "passed": false
+  },
+  "interpolation": {
+    "test_name": "Interpolation",
+    "mean_deviation": 23.17218894280094,
+    "std_deviation": 8.636134038724146,
+    "n_pairs": 4,
+    "passed": false,
+    "details": [
+      {
+        "pair": [
+          "mmot_006243.npz",
+          "mmot_006246.npz"
+        ],
+        "price1": 113.3757553100586,
+        "price2": 82.14630889892578,
+        "price_interp": 124.54849243164062,
+        "expected_price": 97.76103210449219,
+        "deviation_pct": 27.400959002270532
+      },
+      {
+        "pair": [
+          "mmot_007026.npz",
+          "mmot_007027.npz"
+        ],
+        "price1": 97.3060302734375,
+        "price2": 97.2629165649414,
+        "price_interp": 128.13742065429688,
+        "expected_price": 97.28447341918945,
+        "deviation_pct": 31.714153503370508
+      },
+      {
+        "pair": [
+          "mmot_007032.npz",
+          "mmot_007033.npz"
+        ],
+        "price1": 106.40200805664062,
+        "price2": 95.28810119628906,
+        "price_interp": 125.77608489990234,
+        "expected_price": 100.84505462646484,
+        "deviation_pct": 24.722114897734244
+      },
+      {
+        "pair": [
+          "mmot_007036.npz",
+          "mmot_007037.npz"
+        ],
+        "price1": 118.51119232177734,
+        "price2": 112.35872650146484,
+        "price_interp": 125.65271759033203,
+        "expected_price": 115.4349594116211,
+        "deviation_pct": 8.851528367828484
+      }
+    ]
+  },
+  "overall_passed": false
+}

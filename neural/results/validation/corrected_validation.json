@@ -1,0 +1,13 @@
+{
+  "val_mean_error": 0.7672581902879756,
+  "val_median_error": 0.7021530414931476,
+  "val_drift": 0.10440147399902344,
+  "fresh_mean_error": 0.7623203010880388,
+  "fresh_median_error": 0.7089628634275869,
+  "fresh_drift": 0.10116371154785156,
+  "classical_ms": 4711.39612197876,
+  "neural_ms": 3.965251445770264,
+  "speedup": 1188.1708351697112,
+  "passed": 5,
+  "total": 10
+}

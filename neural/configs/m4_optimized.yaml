@@ -1,0 +1,36 @@
+# Apple M4 Optimized Configuration
+# Inherits from default.yaml with M4-specific tuning
+
+# Override training for M4 memory constraints
+training:
+  batch_size: 32           # Sweet spot for 16GB RAM
+  gradient_accumulation: 1 # No accumulation needed
+  
+# M4-specific hardware settings
+hardware:
+  device: "mps"            # Metal Performance Shaders
+  mixed_precision: false   # FP16 unstable on M4
+  compile: false           # torch.compile experimental
+  num_threads: 8           # Leave 2 cores for OS
+  
+# Optimized data loading for M4
+data:
+  num_workers: 4           # 4 workers optimal for 10-core CPU
+  prefetch_factor: 2       # Prefetch 2 batches
+  persistent_workers: true # Keep workers alive
+  
+# Memory-efficient settings
+# (model parameters inherited from default.yaml)
+  
+# Training optimizations
+optimizer:
+  fused: true              # Fused AdamW for Metal
+  
+# Faster validation
+validation:
+  batch_size: 64           # Can use larger batch for inference
+  
+# Logging (reduced frequency for speed)
+logging:
+  log_freq: 20             # Log every 20 batches
+  save_freq: 1             # Save every epoch for validation

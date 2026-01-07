@@ -1,0 +1,22 @@
+# Production Training Configuration
+# Phase 3: Bug Fixes Applied (Kernel + Drift)
+
+training:
+  epochs: 100              # Full run for convergence
+  batch_size: 32           # M4 Sweet spot
+  validation_freq: 1
+  learning_rate: 5e-5      # Reduced from 1e-4 for stability with stronger losses
+
+loss:
+  lambda_distill: 1.0      # Keep high as primary signal
+  lambda_martingale: 1.0   # INCREASED from 0.1 (was too weak)
+  lambda_drift: 0.5        # NEW: Explicit drift penalty for E[h]=0
+  lambda_marginal: 0.1     # Keep low
+  epsilon: 1.0             # Match classical solver
+
+logging:
+  save_freq: 5             # Save checkpoint every 5 epochs
+  log_freq: 20
+
+hardware:
+  device: "mps"            # Force MPS

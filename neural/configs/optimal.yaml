@@ -1,0 +1,39 @@
+# Optimal Configuration Based on Ablation Study
+# 
+# Key findings from systematic ablation:
+# - Learning rate: 3e-4 optimal (8.38% error)
+# - Lambda martingale: 2.5 optimal (8.39% error)
+# - Layers: 5 optimal (8.94% error)
+# - Hidden: 256 optimal (9.99% error)
+# - Dropout: 0.0 optimal (no overfitting)
+# - DRIFT: All configs achieve ~0.019-0.02 (excellent)
+
+model:
+  grid_size: 150
+  hidden_dim: 256
+  num_layers: 5
+  num_heads: 4
+  dropout: 0.0
+
+training:
+  epochs: 100
+  batch_size: 32
+  learning_rate: 3.0e-4
+  weight_decay: 1.0e-5
+
+scheduler:
+  type: cosine
+  T_max: 100
+  warmup_epochs: 10
+
+loss:
+  lambda_distill: 1.0
+  lambda_martingale: 2.5
+  lambda_marginal: 0.1
+  epsilon: 1.0
+
+data:
+  train_dir: data/train
+  val_dir: data/val
+  num_workers: 0
+  pin_memory: false

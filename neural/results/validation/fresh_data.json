@@ -1,0 +1,16 @@
+{
+  "test_name": "Fresh Data Validation",
+  "n_instances": 100,
+  "mean_error": 1.5029416616878726,
+  "std_error": 4.176348707150736,
+  "median_error": 0.1599691996926628,
+  "max_error": 23.97225166225517,
+  "mean_drift": 0.09520935267210007,
+  "passed": false,
+  "details": [
+    {
+      "file": "fresh_000000.npz",
+      "price_neural": 0.6446858048439026,
+      "price_classical": 0.666996955871582,
+      "error_pct": 3.3450154204264533,
+      "drift": 

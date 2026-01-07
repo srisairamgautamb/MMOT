@@ -1,0 +1,31 @@
+{
+  "total": 120,
+  "mean_error": 5.123627662658691,
+  "median_error": 4.819340705871582,
+  "mean_drift": 0.400201678276062,
+  "speedup": 0.4423937238125927,
+  "tickers": {
+    "SPY": {
+      "instances": 40,
+      "mean_error": 4.887085914611816,
+      "median_error": 4.418521881103516,
+      "mean_drift": 0.37817010283470154,
+      "speedup": 1.2254013767630318
+    },
+    "AAPL": {
+      "instances": 40,
+      "mean_error": 5.504295349121094,
+      "median_error": 5.39430046081543,
+      "mean_drift": 0.37021780014038086,
+      "speedup": 0.0488523419248833
+    },
+    "TSLA": {
+      "instances": 40,
+      "mean_error": 4.9795026779174805,
+      "median_error": 5.111893177032471,
+      "mean_drift": 0.4522171914577484,
+      "speedup": 0.052927452749862915
+    }
+  },
+  "passed": 2
+}

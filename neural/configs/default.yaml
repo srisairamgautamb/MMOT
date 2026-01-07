@@ -1,0 +1,79 @@
+# Default configuration for Neural MMOT Solver
+# Apple M4 optimized settings
+
+# Model architecture
+model:
+  grid_size: 150           # Spatial discretization (optimized to 150)
+  hidden_dim: 256          # Latent dimension
+  num_heads: 4             # Multi-head attention
+  num_layers: 3            # Transformer depth
+  dropout: 0.1             # Regularization
+
+# Training hyperparameters
+training:
+  batch_size: 32           # Max for 16GB RAM
+  learning_rate: 1.0e-4    # Conservative for stability
+  epochs: 50               # Balanced training (not over-fitting)
+  gradient_clip: 1.0       # Prevent exploding gradients
+  validation_freq: 1       # Validate every N epochs
+  
+# Optimizer settings
+optimizer:
+  type: "AdamW"
+  weight_decay: 1.0e-4
+  betas: [0.9, 0.999]
+  eps: 1.0e-8
+  
+# Learning rate scheduler
+scheduler:
+  type: "CosineAnnealingLR"
+  T_max: 50                # Match epochs
+  eta_min: 1.0e-6
+  
+# Loss function weights
+loss:
+  lambda_distill: 1.0      # Distillation (main signal)
+  lambda_martingale: 5.0   # Physics constraint (BALANCED: not 0.5, not 100)
+  lambda_marginal: 0.1     # Soft constraint
+  lambda_reg: 1.0e-4       # L2 regularization
+  epsilon: 1.0             # Entropic regularization (increased for stability)
+
+# Data settings
+data:
+  train_dir: "data/train"
+  val_dir: "data/val"
+  num_workers: 0           # DataLoader workers (0 = main thread, avoids deadlock)
+  pin_memory: true         # Faster CPU->GPU transfer
+  max_N: 50                # Max time steps (for padding)
+  
+# Hardware settings
+hardware:
+  device: "mps"            # Apple Metal Performance Shaders
+  mixed_precision: false   # Disable for M4 stability
+  compile: false           # torch.compile() - experimental on M4
+  
+# Early stopping
+early_stopping:
+  patience: 10             # Epochs without improvement
+  min_delta: 1.0e-5       # Minimum change to qualify as improvement
+  monitor: "val_loss"      # Metric to monitor
+  
+# Checkpointing
+checkpoint:
+  save_dir: "checkpoints"
+  save_freq: 5             # Save every N epochs
+  save_best: true          # Keep best model
+  save_last: true          # Keep final model
+  
+# Logging
+logging:
+  log_dir: "runs"
+  log_freq: 10             # Log every N batches
+  tensorboard: true
+  wandb: false             # Disable by default
+  
+# Grid specification (must match Phase 2a)
+grid:
+  S_min: 50.0              # Minimum asset price
+  S_max: 200.0             # Maximum asset price
+  M: 150                   # Grid points (optimized from 200)

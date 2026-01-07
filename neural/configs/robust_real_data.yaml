@@ -1,0 +1,78 @@
+# Robust Training Configuration for Real Data Generalization
+
+model:
+  grid_size: 150
+  hidden_dim: 256
+  num_layers: 3
+  num_heads: 4
+  dropout: 0.2  # INCREASED from 0.1 to combat overfitting
+
+training:
+  batch_size: 32
+  learning_rate: 5.0e-5  # LOWER for fine-tuning
+  epochs: 100  # MORE training for convergence
+  gradient_clip: 1.0
+  validation_freq: 2
+  label_smoothing: 0.1  # Smooth teacher targets
+  
+optimizer:
+  type: "AdamW"
+  weight_decay: 5.0e-4  # HIGHER regularization
+  betas: [0.9, 0.999]
+  eps: 1.0e-8
+  
+scheduler:
+  type: "ReduceLROnPlateau"  # Adaptive LR
+  patience: 5
+  factor: 0.5
+  min_lr: 1.0e-6
+  
+loss:
+  loss_type: "huber"  # Robust to outliers
+  lambda_distill: 1.0
+  lambda_martingale: 10.0  # INCREASED from 5.0
+  lambda_drift: 10.0
+  lambda_marginal: 0.1
+  lambda_reg: 5.0e-4
+  epsilon: 1.0  # CRITICAL: must match data
+  huber_delta: 0.1  # Huber loss threshold
+
+# Data augmentation (applied during training)
+data_augmentation:
+  marginal_noise_std: 0.02  # Add 2% Gaussian noise to marginals
+  potential_noise_std: 0.01  # Add 1% noise to teacher potentials
+  random_shift: true  # Random time-shift augmentation
+  
+data:
+  train_dir: "neural/data/train"
+  val_dir: "neural/data/val"
+  num_workers: 0
+  pin_memory: true
+  max_N: 50
+  
+hardware:
+  device: "mps"
+  mixed_precision: false
+  compile: false
+  
+early_stopping:
+  patience: 15  # More patience
+  min_delta: 1.0e-6
+  monitor: "val_loss"
+  
+checkpoint:
+  save_dir: "checkpoints/robust"
+  save_freq: 5
+  save_best: true
+  save_last: true
+  
+logging:
+  log_dir: "runs/robust"
+  log_freq: 10
+  tensorboard: true
+  wandb: false
+
+grid:
+  S_min: 50.0
+  S_max: 200.0
+  M: 150

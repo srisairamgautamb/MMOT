@@ -1,0 +1,41 @@
+{
+  "val_mean_error": 0.7672581902879756,
+  "val_median_error": 0.7021530414931476,
+  "val_drift": 0.3721053026616573,
+  "fresh_mean_error": 0.7623203010880388,
+  "fresh_median_error": 0.7089628634275869,
+  "fresh_drift": 0.37771927744150163,
+  "real_instances": 120,
+  "real_mean_error": 5.503341197967529,
+  "real_median_error": 5.464080810546875,
+  "real_drift": 0.3834148943424225,
+  "real_tickers": {
+    "SPY": {
+      "instances": 40,
+      "mean_error": 5.478386402130127,
+      "median_error": 4.950284004211426,
+      "drift": 0.37814152240753174
+    },
+    "AAPL": {
+      "instances": 40,
+      "mean_error": 4.994317054748535,
+      "median_error": 4.838054180145264,
+      "drift": 0.3713204860687256
+    },
+    "TSLA": {
+      "instances": 40,
+      "mean_error": 6.037320613861084,
+      "median_error": 6.51664924621582,
+      "drift": 0.40078264474868774
+    }
+  },
+  "martingale_mean_drift": 0.08115172121875608,
+  "martingale_median_drift": 0.08075558599084616,
+  "martingale_max_drift": 0.16278584972023963,
+  "martingale_violations": 33,
+  "classical_ms": 4625.30472278595,
+  "neural_ms": 2.8954362869262695,
+  "speedup": 1597.4465553500643,
+  "passed": 5,
+  "total": 8
+}

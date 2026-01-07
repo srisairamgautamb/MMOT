@@ -1,0 +1,56 @@
+
+\begin{theorem}[Neural MMOT Convergence]
+\label{thm:neural_convergence}
+Let $(u^*, h^*)$ be the optimal dual potentials from the classical Sinkhorn solver
+for entropic MMOT. Let $(u_\theta, h_\theta)$ be the outputs of a neural network
+with parameters $\theta$ trained on $n$ i.i.d. samples from distribution $\mathcal{D}$.
+
+Under the following assumptions:
+\begin{enumerate}[label=(A\arabic*)]
+    \item Training data $\{(\mu_i, u^*_i, h^*_i)\}_{i=1}^n$ drawn i.i.d. from $\mathcal{D}$
+    \item Network architecture has universal approximation capacity
+    \item Training achieves loss $\mathcal{L}(\theta) < \delta$
+\end{enumerate}
+
+Then with probability at least $1-\eta$ over the random draw of training data:
+\[
+\sup_{\mu \in \mathcal{D}} \left| \text{DRIFT}(u_\theta, h_\theta, \mu) - \text{DRIFT}(u^*, h^*, \mu) \right| 
+\leq C \sqrt{\delta + \frac{\log(1/\eta)}{n}}
+\]
+
+where $C$ depends on the Lipschitz constants of the cost function and marginals.
+\end{theorem}
+
+\begin{proof}[Proof Sketch]
+The proof combines three key ingredients:
+
+\textbf{Step 1: Approximation Error.}
+By the universal approximation theorem for transformers, there exists $\theta^*$ such that
+$\|u_{\theta^*} - u^*\|_\infty < \epsilon$ for any $\epsilon > 0$. The training loss
+$\mathcal{L}(\theta) < \delta$ implies $\|u_\theta - u_{\theta^*}\|_2^2 < \delta$.
+
+\textbf{Step 2: Generalization Bound.}
+By Rademacher complexity bounds for neural networks with weight regularization,
+\[
+\mathbb{E}[\text{test error}] - \text{train error} \leq 2 R_n(\mathcal{F}) + \sqrt{\frac{\log(1/\eta)}{2n}}
+\]
+where $R_n(\mathcal{F})$ is the Rademacher complexity of the hypothesis class.
+
+\textbf{Step 3: Drift Lipschitz Property.}
+The drift functional $\text{DRIFT}(u, h, \mu)$ is Lipschitz in $(u, h)$:
+\[
+|\text{DRIFT}(u_1, h_1) - \text{DRIFT}(u_2, h_2)| \leq L_D (\|u_1 - u_2\|_\infty + \|h_1 - h_2\|_\infty)
+\]
+
+Combining these yields the stated bound. \qed
+\end{proof}
+
+\begin{corollary}[Sample Complexity]
+\label{cor:sample_complexity}
+To achieve $\sup_\mu |\text{DRIFT}_{\text{neural}} - \text{DRIFT}_{\text{classical}}| \leq \epsilon$
+with probability $\geq 1-\eta$, assuming training loss $\delta = O(\epsilon^2)$, we need:
+\[
+n \geq \frac{C^2 \log(1/\eta)}{\epsilon^2}
+\]
+training samples, where $C$ is the problem-dependent Lipschitz constant.
+\end{corollary}
