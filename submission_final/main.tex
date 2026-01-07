@@ -179,7 +179,7 @@ Martingale Optimal Transport (MOT) offers a non-parametric alternative grounded 
 
 \begin{figure}[t]
 \centering
-\includegraphics[width=0.88\columnwidth]{{figure1_model_risk_REGENERATED}.pdf}
+\includegraphics[width=0.88\columnwidth]{figure1_model_risk.pdf}
 \caption{Computational complexity versus model risk in derivatives pricing. MMOT (green shaded) offers model-free pricing with moderate computational cost compared to Black-Scholes (high model risk) and linear programming (high complexity).}
 \label{fig:model_risk}
 \end{figure}
@@ -407,7 +407,7 @@ with $\rho=1-\frac{\varepsilon}{L_{c}D+\varepsilon}+O(\varepsilon^{2})$, where $
 
 \begin{figure}[t]
 \centering
-\includegraphics[width=0.88\columnwidth]{{figure2_convergence_REGENERATED}.pdf}
+\includegraphics[width=0.88\columnwidth]{figure2_convergence.pdf}
 \caption{Solver convergence on log-linear scale demonstrating linear convergence rate. Observed asymptotic slope $-0.065$ (blue line with markers) matches theoretical prediction $(1-\kappa^2)^{1/3} = 0.0648$ with $\kappa=0.42$ (red dashed line). Problem size: $N=10$, $M=150$, $\varepsilon=0.5$.}
 \label{fig:convergence}
 \end{figure}
@@ -493,7 +493,7 @@ The combined constant $C = 2(L_c + \varepsilon D)/\varepsilon$ is explicit and m
 
 \begin{figure}[t]
 \centering
-\includegraphics[width=0.88\columnwidth]{{figure3_donsker_rate_REGENERATED}.pdf}
+\includegraphics[width=0.88\columnwidth]{figure3_donsker_rate.pdf}
 \caption{Continuous-time convergence rate verification on log-log scale. Empirical measurements (blue circles) follow the theoretical $O(\sqrt{\Delta t})$ rate (red dashed line with slope $-0.5$). The measured slope of $-0.503$ confirms the Donsker-type bound from Theorem 3.}
 \label{fig:donsker_rate}
 \end{figure}
@@ -932,7 +932,7 @@ $N$  & $M$  & Classical (s)  & Neural (ms)  & Speedup \\
 
 \begin{figure}[t]
 \centering
-\includegraphics[width=0.88\columnwidth]{{figure5_speedup_scaling_REGENERATED}.pdf}
+\includegraphics[width=0.88\columnwidth]{figure5_speedup_scaling.pdf}
 \caption{Neural solver speedup factor relative to classical Sinkhorn across problem sizes. Maximum speedup of $6882\times$ observed at $(N=20, M=200)$. Performance gains vary by regime: limited by overhead for small instances and memory bandwidth for large instances.}
 \label{fig:speedup_scaling}
 \end{figure}
@@ -961,7 +961,7 @@ Pass Rate ($<0.1$)  & 71.2\%  & 68.4\%  & 65.9\%  & 68.5\% \\
 
 \begin{figure}[t]
 \centering
-\includegraphics[width=0.88\columnwidth]{{figure6_transport_plan_REGENERATED}.pdf}
+\includegraphics[width=0.88\columnwidth]{figure6_transport_plan.pdf}
 \caption{Optimal transport plan $\pi^*_{0,1}$ for synthetic GBM marginals showing sparse probability mass concentration (viridis colormap). The diagonal structure (red dashed line) reflects the martingale constraint $\mathbb{E}[X_1|X_0] = X_0$. Concentrated peak near $(x_0, x_1) = (5500, 6500)$ indicates high-probability transition path.}
 \label{fig:transport_plan}
 \end{figure}
@@ -1046,7 +1046,7 @@ The introduction of the \textbf{Martingale Projection Layer} (described below) h
 
 \begin{figure}[t!]
 \centering
-\includegraphics[width=0.88\columnwidth]{figure7_real_marginals_REGENERATED.pdf}
+\includegraphics[width=0.88\columnwidth]{figure7_real_marginals.pdf}
 \caption{Calibrated Risk-Neutral Marginals - Latest Market Data (Jan 2026). Left panel shows short-maturity (30-day) density concentrated near spot (\$6,050.50). Right panel shows long-maturity (90-day) density with wider support reflecting increased uncertainty. Multi-modal structure in long maturity captured via diversified training (GBM/Merton/Heston). Real marginals extracted from S\&P 500 options (bid-ask: ±0.5\%).}
 \label{fig:real_marginals}
 \end{figure}
@@ -1264,7 +1264,7 @@ vs. $O(TM^{2}\cdot\frac{L_{e}D+\varepsilon}{\varepsilon}\cdot\log(1/\delta))$ fo
 
 \begin{figure}[t]
 \centering
-\includegraphics[width=0.88\columnwidth]{{figure8_epsilon_selection_REGENERATED}.pdf}
+\includegraphics[width=0.88\columnwidth]{figure8_epsilon_selection.pdf}
 \caption{Optimal regularization parameter $\varepsilon$ selection balancing computation time (blue, left axis) versus approximation error (red, right axis). The optimal point $\varepsilon^* \approx 0.52$ (green markers and annotation) minimizes total cost for production deployment. Computation time decreases with larger $\varepsilon$ (fewer iterations) while approximation error increases (less accurate).}
 \label{fig:epsilon_selection}
 \end{figure}
